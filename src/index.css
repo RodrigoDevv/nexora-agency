@@ -1,0 +1,138 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --color-primary: var(--theme-primary);
+  --color-accent: var(--theme-accent);
+  --color-accent-hover: var(--theme-accent-hover);
+  --color-white: var(--theme-white);
+  --color-black: var(--theme-black);
+}
+
+:root {
+  --theme-primary: #0A0A0A;
+  --theme-accent: #e3fc53;
+  --theme-accent-hover: #d2ec40;
+  --theme-white: #ffffff;
+  --theme-black: #000000;
+  --theme-bg-base: #030504;
+  --theme-bg-alt: #050605;
+  --theme-surface: #121212;
+}
+
+body {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Light Mode Overrides */
+html.light, .light body, .light {
+  --theme-primary: #f0f0f0;
+  --theme-white: #111111;
+  --theme-black: #ffffff;
+  --theme-accent: #2a66e6;
+  --theme-accent-hover: #1e52c2;
+  --theme-bg-base: #f4f5f7;
+  --theme-bg-alt: #ffffff;
+  --theme-surface: #ffffff;
+  color: var(--theme-white);
+}
+
+/* Custom Hero Backgrounds */
+.bg-hero-base { background-color: #030504; }
+.bg-hero-blob1 { background-color: #1a2e15; }
+.bg-hero-blob2 { background-color: rgba(77, 240, 106, 0.1); }
+.bg-hero-vignette { background-image: radial-gradient(circle at center, transparent 0%, #000000 100%); }
+.hero-grid {
+  background-image: linear-gradient(rgba(255, 255, 255, 1) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 1) 1px, transparent 1px);
+  background-size: 40px 40px;
+  -webkit-mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
+  mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
+}
+
+.light .bg-hero-base { background-color: #f0f0f0; }
+.light .bg-hero-blob1 { background-color: #d1f2d6; }
+.light .bg-hero-blob2 { background-color: rgba(77, 240, 106, 0.2); }
+.light .bg-hero-vignette { background-image: radial-gradient(circle at center, transparent 0%, #dddddd 100%); }
+.light .hero-grid {
+  background-image: linear-gradient(rgba(0, 0, 0, 1) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 0, 0, 1) 1px, transparent 1px);
+  opacity: 0.05 !important;
+}
+
+/* Override fixed Hex colors specifically used by background sections */
+.light .bg-\[\#030504\] { background-color: var(--theme-bg-base) !important; }
+.light .bg-\[\#050605\] { background-color: var(--theme-bg-alt) !important; }
+.light .bg-\[\#030403\] { background-color: var(--theme-bg-base) !important; }
+.light .bg-\[\#0c2e17\] { background-color: rgba(42, 102, 230, 0.1) !important; } /* Accent mapped blob */
+.light .bg-\[\#1a4a25\] { background-color: rgba(42, 102, 230, 0.05) !important; } /* Accent mapped blob */
+.light .bg-\[\#1a1a1a\] { background-color: #f8f9fa !important; }
+.light .bg-\[\#222\] { background-color: #f0f0f0 !important; }
+.light .bg-\[\#121212\] { background-color: var(--theme-surface) !important; }
+.light .bg-\[\#111\] { background-color: var(--theme-surface) !important; }
+
+/* Map black utilities to white in light mode */
+.light .bg-black { background-color: #ffffff; }
+.light .bg-black\/20 { background-color: rgba(255, 255, 255, 0.2); }
+.light .bg-black\/40 { background-color: rgba(255, 255, 255, 0.4); }
+.light .bg-black\/90 { background-color: rgba(255, 255, 255, 0.9); }
+.light .text-black { color: #ffffff; }
+
+/* Override Gradients */
+.light .hover\:border-white\/10:hover, 
+.light .group:hover .group-hover\:border-white\/10,
+.light .hover\:border-white\/20:hover, 
+.light .group:hover .group-hover\:border-white\/20 {
+  border-color: var(--theme-accent) !important;
+}
+
+.light .hover\:bg-white\/10:hover,
+.light .group:hover .group-hover\:bg-white\/10 {
+  background-color: color-mix(in srgb, var(--theme-accent) 5%, transparent) !important;
+}
+
+.light .from-\[\#050605\] {
+  --tw-gradient-from: #f8f9fc var(--tw-gradient-from-position);
+  --tw-gradient-to: rgba(248, 249, 252, 0) var(--tw-gradient-to-position);
+}
+.light .to-\[\#050605\] {
+  --tw-gradient-to: #f8f9fc var(--tw-gradient-to-position);
+}
+.light .from-\[\#030504\] {
+  --tw-gradient-from: #ffffff var(--tw-gradient-from-position);
+  --tw-gradient-to: rgba(255, 255, 255, 0) var(--tw-gradient-to-position);
+}
+.light .to-\[\#030504\] {
+  --tw-gradient-to: #ffffff var(--tw-gradient-to-position);
+}
+.light .from-\[\#121212\] {
+  --tw-gradient-from: #ffffff var(--tw-gradient-from-position);
+  --tw-gradient-to: rgba(255, 255, 255, 0) var(--tw-gradient-to-position);
+}
+.light .from-black\/90 {
+  --tw-gradient-from: rgba(255, 255, 255, 0.9) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgba(255, 255, 255, 0) var(--tw-gradient-to-position);
+}
+.light .via-black\/40 {
+  --tw-gradient-stops: var(--tw-gradient-from), rgba(255, 255, 255, 0.4) var(--tw-gradient-via-position), var(--tw-gradient-to);
+}
+
+.light .group:hover .bg-accent\/10 {
+  background-color: rgba(42, 102, 230, 0.1) !important;
+}
+
+/* Hide scrollbar for smooth scrolling containers */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
